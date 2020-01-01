@@ -1,0 +1,83 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th ,td{
+  text-align: left;
+  float: left;    
+}
+
+
+
+
+button {
+  margin-right: 8px;
+  margin-bottom: 8px;
+  width: 70px;
+  text-align: center;
+  padding: 0;
+}
+
+nz-popover {
+  background-color: black;
+}
+
+.trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .trigger:hover {
+    color: #1890ff;
+  }
+
+  .logo {
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px;
+  }
+
+  nz-header {
+    background: #fff;
+    padding: 0;
+  }
+
+  nz-content {
+    margin: 0 6px;
+    height: 32rem;
+    
+  }
+
+  nz-layout {
+    height : 100%;
+  }
+
+  nz-breadcrumb {
+    margin: 16px 0;
+  }
+
+  .inner-content {
+    padding: 24px;
+    background: #fff;
+    height: 100%;
+    
+  }
+
+  
+
+  nz-footer {
+    text-align: center;
+  }
+
+  .demo-infinite-container {
+    height: 300px;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+  }
+
+  nz-list {
+    padding: 24px;
+  }

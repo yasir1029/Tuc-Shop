@@ -1,0 +1,123 @@
+<nz-layout>
+    <nz-sider  [(nzCollapsed)]="CollapsedVar" [nzTrigger]="null">
+      <div class="logo"></div>
+      <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+        <div *ngFor="let categoriesObj of categories">
+        <li nz-menu-item 
+        nz-popover
+        [nzPopoverTitle]="categoriesObj.name"
+        nzPopoverPlacement="right"
+        >
+          <img [src]="categoriesObj.icon">
+          <ul>
+            <li nz-menu-item>{{categoriesObj.name}}</li>
+          </ul>
+        </li>
+        </div>
+      </ul>
+    </nz-sider>
+    <nz-layout>
+      <nz-header>
+        <i
+          class="trigger"
+          nz-icon
+          [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          (click)="isCollapsed = !isCollapsed"
+        ></i>
+        <app-header-badge style="float:right"></app-header-badge>
+      </nz-header>
+      <div nz-row>
+        <div nz-col nzSpan="16">
+          <app-product-card (productData)="addToPos($event)"></app-product-card>
+        </div>
+        
+        <div nz-col nzSpan="8">
+          <nz-content>
+            <nz-breadcrumb>
+              
+            </nz-breadcrumb>
+            <div class="inner-content" >
+                <h3>This is POS</h3>
+                <hr>
+                <div style="height: 300px;overflow-y: scroll;">
+                <div >
+                    <div *ngFor="let data of posData">
+                      <nz-card nzHoverable style="width:100%" >
+                        <div nz-row>
+                          <div nz-col nzSpan="8">
+                            <nz-avatar [nzShape]="'square'" [nzSize]="64" [nzSrc]="data.image" [nzIcon]="'user'"></nz-avatar>
+                          </div>
+                          <div nz-col nzSpan="8">
+                            <h4 nz-title style="font-size: 15px;">{{data.title}}X{{data.qty}}</h4>
+                          </div>
+                          <div nz-col nzSpan="8">
+                            <h4 nz-title>{{data.price}} Rs </h4>
+                          </div>
+                        </div>
+                      </nz-card> 
+                    </div>
+                    
+                </div>
+              </div>
+              
+              <br><br><br>    
+              <div nz-row>
+                <div nz-col nzSpan="12">
+                  <button nz-button nzType="primary" (click)="showModal()">
+                    <span>Checkout</span>
+                  </button>
+                </div>
+                <div nz-col nzSpan="12">
+                  <h4 nz-title>Price:{{totalPrice}} Rs</h4>
+                </div>
+              </div>  
+              
+            </div>
+          </nz-content>
+        </div>
+      </div>
+      <!-- modal -->
+      <nz-modal
+      [(nzVisible)]="isVisible"
+      [nzTitle]="modalTitle"
+      [nzContent]="modalContent"
+      [nzFooter]="modalFooter"
+      (nzOnCancel)="handleCancel()"
+    >
+      <ng-template #modalTitle>
+        Custom Modal Title
+      </ng-template>
+
+      <ng-template #modalContent>
+        <p>Modal Content</p>
+        <p>Modal Content</p>
+        <p>Modal Content</p>
+        <p>Modal Content</p>
+        <p>Modal Content</p>
+      </ng-template>
+
+      <ng-template #modalFooter>
+        <span>Modal Footer: </span>
+        <button nz-button nzType="default" printSectionId="print-section" ngxPrint>Print</button>
+        <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading">Continue</button>
+      </ng-template>
+    </nz-modal>
+    </nz-layout>
+  </nz-layout>
+  <div id="print-section" style="display: none;">
+  <table style="width:100%" id="print-section">
+    <tr>
+      <th>product</th>
+      <th>Quantity</th>
+      <th>price</th>
+    </tr>
+    <div *ngFor="let data of posData">
+    <tr>
+      <td>{{data.title}}</td>
+      <td>{{data.qty}}</td>
+      <td>{{data.price}}</td>
+    </tr>
+    </div>
+  </table>
+  </div>
+

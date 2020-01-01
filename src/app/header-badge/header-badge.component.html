@@ -1,0 +1,13 @@
+<nz-button-group style="margin-right:4em;">
+        <button nz-button (click)="log()">Welcome, User</button>
+        <button nz-button nz-dropdown [nzDropdownMenu]="menu1" nzPlacement="bottomRight">
+          <i nz-icon nzType="user"></i>
+        </button>
+</nz-button-group>
+<nz-dropdown-menu #menu1="nzDropdownMenu">
+        <ul nz-menu>
+          <li nz-menu-item>menu1 1st menu item</li>
+          <li nz-menu-item>menu1 2nd menu item</li>
+          <li nz-menu-item>menu1 3rd menu item</li>
+        </ul>
+</nz-dropdown-menu>

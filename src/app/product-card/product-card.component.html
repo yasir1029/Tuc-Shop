@@ -1,0 +1,24 @@
+<nz-content style="overflow: scroll;">
+        <nz-breadcrumb>
+          
+        </nz-breadcrumb>
+        <div class="inner-content">
+          <h3>Products</h3>
+          <hr>
+          <div nz-row>
+           <div nz-col nzSpan="8" *ngFor="let product of productDetails">
+           <a>
+            <div style="padding:30px;">
+            <nz-card [nzTitle]="product.title">
+                <h4>{{product.price}}</h4>
+                <nz-avatar [nzSize]="64" [nzSrc]="product.image"></nz-avatar>
+                <p style="float: right;">{{product.category}}</p>
+                <button (click)="prodSendtoLayout(product)">buy</button>
+            </nz-card>                        
+            </div>
+           </a>
+          </div>                 
+          </div>
+        </div>
+</nz-content>
+
